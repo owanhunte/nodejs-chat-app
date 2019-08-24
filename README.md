@@ -1,12 +1,12 @@
 # Node.js Chat App
 
-A simple demo chat app built on [Node.js], [Express.js](https://expressjs.com/) and Socket.io
+A simple demo chat app built on [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/) and Socket.io
 
 ## Pre-requisites
 
 To setup and run the project for local development / testing, you will need to use Node.js and NPM. I don't explicitly specify a minimum Node.js/NPM version for the app but I recommend going with whatever the latest LTS version is at the point in time you are setting things up. The current Node.js LTS version is **10.16.3**.
 
-Installers can be found here: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+Installers can be found here: [https://nodejs.org/en/download](https://nodejs.org/en/download/)
 
 Another option for installing Node is the **Node Version Manager** (**nvm**), which is a POSIX-compliant bash script to manage multiple active Node.js versions. Instructions for installing and using nvm to install Node and NPM can be found at [https://github.com/nvm-sh/nvm](https://github.com/nvm-sh/nvm).
 
