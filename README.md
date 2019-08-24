@@ -29,3 +29,7 @@ npm run dev
 ```
 
 This will start the app and set it up to listen for incoming localhost connections on port 3000. Open up your browser of choice and go to the url [http://localhost:3000/](http://localhost:3000/) to start using the app itself. The `npm run dev` command automatically runs the app using the `nodemon` script so any changes you make the app's javascript code will automatically restart it.
+
+## Customizing the listening port
+
+To configure the port that the app listens on at startup, copy the file `.env.example` to `.env` and set an appropriate value for the `PORT` environment variable listed in the file. This must be done before the app is started.
