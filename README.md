@@ -4,7 +4,7 @@ A simple demo chat app built on [Node.js](https://nodejs.org/), [Express.js](htt
 
 ## Pre-requisites
 
-To setup and run the project for local development / testing, you will need to use Node.js and NPM. I don't explicitly specify a minimum Node.js/NPM version for the app but I recommend going with whatever the latest LTS version is at the point in time you are setting things up. The current Node.js LTS version is **10.16.3**.
+To setup and run the project for local development / testing, you will need to use Node.js and NPM. I don't explicitly specify a minimum Node.js/NPM version for the app but I recommend going with whatever the latest LTS version is at the point in time you are setting things up. The minimum vesion of Node.js that I have tested this app on is **10.16.3**.
 
 Installers can be found here: [https://nodejs.org/en/download](https://nodejs.org/en/download/)
 
@@ -28,7 +28,7 @@ After doing an `npm install` enter the following `npm run` command:
 npm run dev
 ```
 
-This will start the app and set it up to listen for incoming connections on port 3000. Open up your browser of choice and go to the url [http://localhost:3000/](http://localhost:3000/) to start using the app itself. The `npm run dev` command automatically runs the app using the `nodemon` script so any changes you make the app's javascript, CSS or HTML code will automatically restart it.
+This will start the app and set it up to listen for incoming connections on port 3000. Open up your browser of choice and go to the url [http://localhost:3000/](http://localhost:3000/) to start using the app itself. The `npm run dev` command automatically runs the app using the `nodemon` script so any changes you make to the app's javascript, CSS or HTML code will automatically restart it.
 
 ## Customizing the listening port
 
