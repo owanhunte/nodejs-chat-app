@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "./node_modules/nodemon/bin/nodemon.js --ext js,css,html src/index.js",
+    "dev": "nodemon --ext js,css,html src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
