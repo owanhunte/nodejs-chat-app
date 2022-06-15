@@ -80,6 +80,7 @@ $messageForm.addEventListener("submit", e => {
     $messageFormButton.removeAttribute("disabled");
     $messageFormInput.value = "";
     $messageFormInput.focus();
+    $messageForm.scrollTop = elem.scrollHeight;
 
     if (error) {
       return console.log(error);
@@ -104,6 +105,7 @@ $sendLocationBtn.addEventListener("click", () => {
         },
         error => {
           $sendLocationBtn.removeAttribute("disabled");
+          $messageForm.scrollTop = elem.scrollHeight;
           if (!error) {
             console.log("Location shared!");
           }

@@ -56,7 +56,7 @@ button:disabled {
 
 .centered-form {
     background: #333744;
-    width: 100vw;
+    min-width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -67,7 +67,12 @@ button:disabled {
     box-shadow: 0 0 17px 1px #1D1F26;
     background: #F7F7FA;
     padding: 24px;
-    width: 250px
+    min-width: 250px
+}
+
+.form__joinbutton{
+    margin-top: 10px;
+    border-radius: 10px;
 }
 
 .centered-form button {
