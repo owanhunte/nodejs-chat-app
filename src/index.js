@@ -4,6 +4,7 @@ const express = require("express");
 const socketio = require("socket.io");
 const Filter = require("bad-words");
 const gravatar = require('gravatar');
+var player = require('play-sound')(opts = {})
 const { generateMessage, generateLocationMessage } = require("./utils/messages");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./utils/users");
 
@@ -31,13 +32,12 @@ io.on("connection", socket => {
     } else {
       socket.join(user.room);
 
-      socket.emit("message", generateMessage("System", "Welcome!"));
-      socket.broadcast.to(user.room).emit("message", generateMessage("System", `${user.username} has joined!`));
+      socket.emit("message", generateMessage("System", "» Welcome to the chatroom!"));
+      socket.broadcast.to(user.room).emit("message", generateMessage("System", `» ${user.username} has joined!`));
 
       io.to(user.room).emit("roomData", {
         room: user.room,
-        users: getUsersInRoom(user.room),
-        // userpfp: gravatar.profile_url(user.username)
+        users: getUsersInRoom(user.room)
       });
 
       callback();
@@ -49,12 +49,12 @@ io.on("connection", socket => {
     const filter = new Filter();
 
     if (filter.isProfane(message)) {
-      return callback("Profanity is not allowed!");
+      // return callback("Profanity is not allowed!");
+      io.to(user.room).emit("message", generateMessage("System", `» ${user.username}: Profanity is not allowed!`));
+      callback();
     } else {
       io.to(user.room).emit("message", generateMessage(user.username, message));
       callback();
-      // global.document = new JSDOM(html).window.document;
-      // document.getElementById(`page__title`).innerHTML = `New Message!`
     }
   });
 
@@ -68,7 +68,7 @@ io.on("connection", socket => {
     const user = removeUser(socket.id);
 
     if (user) {
-      io.to(user.room).emit("message", generateMessage("System", `${user.username} has left!`));
+      io.to(user.room).emit("message", generateMessage("System", `» ${user.username} has left!`));
       io.to(user.room).emit("roomData", {
         room: user.room,
         users: getUsersInRoom(user.room)
