@@ -91,7 +91,7 @@ button:disabled {
 
 .chat__sidebar {
     height: 100vh;
-    color: white;
+    /* color: white; */
     background: #333744;
     width: 225px;
     overflow-y: scroll;
@@ -179,5 +179,15 @@ button:disabled {
 .users {
     list-style-type: none;
     font-weight: 300;
-    padding: 12px 24px 0 24px;
+    padding: 12px 24px 10px 24px;
+    padding-bottom: 40px;
+}
+
+.user_item {
+    color: lightgray;
+    padding-bottom: 40px;
+}
+
+.icon-gray {
+    color: gray;
 }

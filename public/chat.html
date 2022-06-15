@@ -1,9 +1,10 @@
 <!doctype html>
 <html>
     <head>
-        <title>Chat App</title>
+        <title id="page__title">Chat App</title>
         <link rel="icon" href="/img/favicon.png">
         <link rel="stylesheet" href="/css/styles.min.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
     </head>
     <body>
         <div class="chat">
@@ -13,16 +14,19 @@
 
                 <div class="compose">
                     <form id="message-form" action="">
-                        <input name="message" type="text" placeholder="Message" required autocomplete="off">
-                        <button>Send</button>
+                        <input name="message" type="text" placeholder="Send a Message" required autocomplete="off">
+                        <button><i class="fa-solid fa-paper-plane"></i> Send </button>
                     </form>
-                    <button id="send-location">Send location</button>
+                    <button id="send-location"><i class="fa-solid fa-location-crosshairs pr-4"></i> Share Location</button>
                 </div>
             </div>
         </div>
 
         <script id="message-template" type="text/html">
             <div class="message">
+                <p>
+                    <img src="https://cdn.axtonprice.com/img/aNmcNLNdRY.png" class="message__logo" /> 
+                </p>
                 <p>
                     <span class="message__name">{{username}}</span>
                     <span class="message__meta">{{createdAt}}</span>
@@ -42,11 +46,11 @@
         </script>
 
         <script id="sidebar-template" type="text/html">
-            <h2 class="room-title">{{room}}</h2>
-            <h3 class="list-title">Users</h3>
+            <h2 class="room-title"><i class="fa-solid fa-comments pr-6"></i> {{room}}</h2>
+            <h3 class="list-title"><i class="fa-solid fa-users icon-gray pr-6"></i> Users:</h3>
             <ul class="users">
                 {{#users}}
-                    <li>{{username}}</li>
+                    <li class="user_item"><i class="fa-solid fa-arrow-right pr-6"></i> {{username}}</li>
                 {{/users}}
             </ul>
         </script>

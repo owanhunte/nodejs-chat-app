@@ -3,12 +3,16 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const Filter = require("bad-words");
+const gravatar = require('gravatar');
 const { generateMessage, generateLocationMessage } = require("./utils/messages");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./utils/users");
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 require("dotenv").config();
 
@@ -27,11 +31,13 @@ io.on("connection", socket => {
     } else {
       socket.join(user.room);
 
-      socket.emit("message", generateMessage("Admin", "Welcome!"));
-      socket.broadcast.to(user.room).emit("message", generateMessage("Admin", `${user.username} has joined!`));
+      socket.emit("message", generateMessage("System", "Welcome!"));
+      socket.broadcast.to(user.room).emit("message", generateMessage("System", `${user.username} has joined!`));
+
       io.to(user.room).emit("roomData", {
         room: user.room,
-        users: getUsersInRoom(user.room)
+        users: getUsersInRoom(user.room),
+        // userpfp: gravatar.profile_url(user.username)
       });
 
       callback();
@@ -47,6 +53,8 @@ io.on("connection", socket => {
     } else {
       io.to(user.room).emit("message", generateMessage(user.username, message));
       callback();
+      // global.document = new JSDOM(html).window.document;
+      // document.getElementById(`page__title`).innerHTML = `New Message!`
     }
   });
 
@@ -60,7 +68,7 @@ io.on("connection", socket => {
     const user = removeUser(socket.id);
 
     if (user) {
-      io.to(user.room).emit("message", generateMessage("Admin", `${user.username} has left!`));
+      io.to(user.room).emit("message", generateMessage("System", `${user.username} has left!`));
       io.to(user.room).emit("roomData", {
         room: user.room,
         users: getUsersInRoom(user.room)
