@@ -3,17 +3,12 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const Filter = require("bad-words");
-const gravatar = require('gravatar');
-var player = require('play-sound')(opts = {})
 const { generateMessage, generateLocationMessage } = require("./utils/messages");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./utils/users");
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
 
 require("dotenv").config();
 
