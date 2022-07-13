@@ -4,7 +4,7 @@ A simple demo chat app built on [Node.js](https://nodejs.org/), [Express.js](htt
 
 ## Demo
 
-https://owan-nodejs-chat-app.herokuapp.com
+https://potato.axtonprice.com
 
 ## Pre-requisites
 
