@@ -4,7 +4,7 @@ A simple demo chat app built on [Node.js](https://nodejs.org/), [Express.js](htt
 
 ## Demo
 
-https://potato.axtonprice.com
+https://potato.arizon.dev
 
 ## Pre-requisites
 
