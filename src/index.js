@@ -18,7 +18,7 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 app.use(express.static(publicDirectoryPath));
 
 io.on("connection", socket => {
-  console.log("New WebSocket connection");
+  // console.log("New WebSocket connection");
 
   socket.on("join", (options, callback) => {
     const { error, user } = addUser({ id: socket.id, ...options });
@@ -27,8 +27,9 @@ io.on("connection", socket => {
     } else {
       socket.join(user.room);
 
-      socket.emit("message", generateMessage("Admin", "Welcome!"));
-      socket.broadcast.to(user.room).emit("message", generateMessage("Admin", `${user.username} has joined!`));
+      socket.emit("systemMessage", generateMessage("System", `» ${user.username} has connected!`));
+      socket.broadcast.to(user.room).emit("systemMessage", generateMessage("System", `» ${user.username} has connected!`));
+
       io.to(user.room).emit("roomData", {
         room: user.room,
         users: getUsersInRoom(user.room)
@@ -43,7 +44,8 @@ io.on("connection", socket => {
     const filter = new Filter();
 
     if (filter.isProfane(message)) {
-      return callback("Profanity is not allowed!");
+      socket.emit("systemMessage", generateMessage("System • (Private)", `» Profanity is not allowed!`));
+      callback();
     } else {
       io.to(user.room).emit("message", generateMessage(user.username, message));
       callback();
@@ -60,7 +62,7 @@ io.on("connection", socket => {
     const user = removeUser(socket.id);
 
     if (user) {
-      io.to(user.room).emit("message", generateMessage("Admin", `${user.username} has left!`));
+      io.to(user.room).emit("message", generateMessage("System", `» ${user.username} has left!`));
       io.to(user.room).emit("roomData", {
         room: user.room,
         users: getUsersInRoom(user.room)

@@ -8,6 +8,7 @@ const $sendLocationBtn = document.querySelector("#send-location");
 const $messages = document.querySelector("#messages");
 
 // Templates
+const systemMessageTemplate = document.querySelector("#system-message-template").innerHTML;
 const messageTemplate = document.querySelector("#message-template").innerHTML;
 const locationMessageTemplate = document.querySelector("#location-message-template").innerHTML;
 const sidebarTemplate = document.querySelector("#sidebar-template").innerHTML;
@@ -58,6 +59,19 @@ socket.on("locationMessage", message => {
   });
 
   $messages.insertAdjacentHTML("beforeend", html);
+  autoscroll();
+});
+
+socket.on("systemMessage", message => {
+  console.log(message);
+  const html = Mustache.render(systemMessageTemplate, {
+    username: message.username,
+    message: message.text,
+    createdAt: moment(message.createdAt).format("h:mm a")
+  });
+
+  $messages.insertAdjacentHTML("beforeend", html);
+  autoscroll();
 });
 
 socket.on("roomData", ({ room, users }) => {
@@ -80,6 +94,8 @@ $messageForm.addEventListener("submit", e => {
     $messageFormButton.removeAttribute("disabled");
     $messageFormInput.value = "";
     $messageFormInput.focus();
+    $messageForm.scrollTop = $messageForm.scrollHeight;
+    autoscroll();
 
     if (error) {
       return console.log(error);
@@ -104,18 +120,20 @@ $sendLocationBtn.addEventListener("click", () => {
         },
         error => {
           $sendLocationBtn.removeAttribute("disabled");
+          $messageForm.scrollTop = $messageForm.scrollHeight;
           if (!error) {
             console.log("Location shared!");
           }
         }
       );
+      autoscroll();
     });
   }
 });
 
 socket.emit("join", { username, room }, error => {
   if (error) {
-    alert(error);
-    location.href = "/";
+    // alert(error);
+    location.href = "/?usrTkn";
   }
 });

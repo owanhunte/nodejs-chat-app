@@ -4,17 +4,19 @@
         <title>Chat App</title>
         <link rel="icon" href="/img/favicon.png">
         <link rel="stylesheet" href="/css/styles.min.css">
+        <link rel="stylesheet" href="/fontawesome/css/fontawesome.css">
+        <link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
     </head>
     <body>
         <div class="centered-form">
             <div class="centered-form__box">
-                <h1>Join</h1>
+                <h1>Join Chatroom</h1>
                 <form action="/chat.html">
                     <label for="username">Display name</label>
-                    <input type="text" name="username" placeholder="Display name" required>
-                    <label for="room">Room</label>
-                    <input type="text" name="room" placeholder="Room" required>
-                    <button>Join</button>
+                    <input type="text" name="username" placeholder="Enter your display name" required>
+                    <label for="room">Room Code</label>
+                    <input type="text" name="room" placeholder="Enter the room code" required>
+                    <button class="form__joinbutton">Join Chat</button>
                 </form>
             </div>
         </div>

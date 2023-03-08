@@ -1,4 +1,4 @@
-const generateMessage = (username, text) => {
+const generateMessage = (username, text,) => {
   return {
     username,
     text,

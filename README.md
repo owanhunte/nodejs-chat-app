@@ -4,7 +4,7 @@ A simple demo chat app built on [Node.js](https://nodejs.org/), [Express.js](htt
 
 ## Demo
 
-https://owan-nodejs-chat-app.herokuapp.com
+https://potato.arizon.dev
 
 ## Pre-requisites
 
@@ -37,3 +37,8 @@ This will start the app and set it up to listen for incoming connections on port
 ## Customizing the listening port
 
 To configure the port that the app listens on at startup, copy the file `.env.example`, located at the root of the project, to `.env` and set an appropriate value for the `PORT` environment variable listed in the file. This must be done before the app is started.
+
+## Credits
+
+Initial author: [owanhunte](https://github.com/owanhunte/nodejs-chat-app) <br>
+Redesigned by: [axtonprice](https://github.com/axtonprice)
